@@ -14486,7 +14486,7 @@ void QCustomPlot::rescaleAxes(bool onlyVisiblePlottables)
 bool QCustomPlot::savePdf(const QString &fileName, int width, int height, QCP::ExportPen exportPen, const QString &pdfCreator, const QString &pdfTitle)
 {
   bool success = false;
-#ifdef QT_NO_PRINTER
+#if defined QT_NO_PRINTER || defined Q_OS_IOS
   Q_UNUSED(fileName)
   Q_UNUSED(exportPen)
   Q_UNUSED(width)

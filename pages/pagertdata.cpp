@@ -24,6 +24,9 @@
 #include <QXmlStreamWriter>
 #include <QXmlStreamReader>
 
+#include <QFileDialog>
+#include <QMessageBox>
+
 PageRtData::PageRtData(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::PageRtData)

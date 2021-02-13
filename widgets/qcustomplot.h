@@ -89,7 +89,11 @@
 #else
 #  include <QtNumeric>
 #  include <QtWidgets/QWidget>
-#  include <QtPrintSupport/QtPrintSupport>
+  #ifdef Q_OS_IOS
+  # include <QtGui/QPainterPath>
+  #else
+  # include <QtPrintSupport/QtPrintSupport>
+  #endif
 #endif
 
 class QCPPainter;

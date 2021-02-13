@@ -53,7 +53,7 @@ DEFINES += HAS_BLUETOOTH
 # Positioning
 DEFINES += HAS_POS
 
-!android: {
+!build_mobile: {
     # Serial port available
     DEFINES += HAS_SERIALPORT
     DEFINES += HAS_GAMEPAD
@@ -72,7 +72,7 @@ win32: {
 
 QT       += core gui
 QT       += widgets
-QT       += printsupport
+!ios{ QT       += printsupport }
 QT       += network
 QT       += quick
 QT       += quickcontrols2
@@ -99,8 +99,8 @@ contains(DEFINES, HAS_GAMEPAD) {
 
 android: QT += androidextras
 
-android: TARGET = vesc_tool
-!android: TARGET = vesc_tool_$$VT_VERSION
+build_mobile: TARGET = vesc_tool
+!build_mobile: TARGET = vesc_tool_$$VT_VERSION
 
 ANDROID_VERSION = 1
 

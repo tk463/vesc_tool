@@ -210,9 +210,11 @@ private:
     void showPage(const QString &name);
     void reloadPages();
     void checkUdev();
+
+#ifdef Q_OS_LINUX
     bool waitProcess(QProcess &process, bool block = true, int timeoutMs = 300000);
     QString runCmd(QString cmd, QStringList args);
-
+#endif
 };
 
 #endif // MAINWINDOW_H

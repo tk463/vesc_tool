@@ -20,8 +20,10 @@
 #include <QDebug>
 #include <math.h>
 #include <qmath.h>
-#include <QPrinter>
-#include <QPrintEngine>
+#ifndef Q_OS_IOS
+    #include <QPrinter>
+    #include <QPrintEngine>
+#endif
 #include <QTime>
 
 #include "mapwidget.h"
@@ -1150,6 +1152,12 @@ void MapWidget::setInfoTraceNow(int infoTraceNow)
 
 void MapWidget::printPdf(QString path, int width, int height)
 {
+#if defined QT_NO_PRINTER || defined Q_OS_IOS
+    Q_UNUSED(path)
+    Q_UNUSED(width)
+    Q_UNUSED(height)
+    qDebug() << Q_FUNC_INFO << "Qt was built without printer support (QT_NO_PRINTER). PDF not created.";
+#else
     if (width == 0) {
         width = this->width();
     }
@@ -1177,6 +1185,7 @@ void MapWidget::printPdf(QString path, int width, int height)
 
     QPainter painter(&printer);
     paint(painter, printer.pageRect().width(), printer.pageRect().height(), true);
+#endif
 }
 
 void MapWidget::printPng(QString path, int width, int height)

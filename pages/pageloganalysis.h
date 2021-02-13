@@ -26,6 +26,8 @@
 #include "widgets/qcustomplot.h"
 #include "widgets/vesc3dview.h"
 
+class QCheckBox;
+
 namespace Ui {
 class PageLogAnalysis;
 }

@@ -24,6 +24,8 @@
 #include <cmath>
 #include <QStandardPaths>
 
+#include <QFileDialog>
+
 PageLogAnalysis::PageLogAnalysis(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::PageLogAnalysis)
